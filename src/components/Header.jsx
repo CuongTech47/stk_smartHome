@@ -72,29 +72,6 @@ function Header () {
                                         <form action="#" id="form-search-top" name="form-search-top">
                                             <input onChange={(e)=>handleSearch(e)} type="text" name="search"  placeholder="Search here..." />
                                             <button form="form-search-top" type="button"><i className="fa fa-search" aria-hidden="true" /></button>
-                                            <div className="wrap-list-cate">
-                                                <input type="hidden" name="product-cate" defaultValue={0} id="product-cate" />
-                                                <a href="#" className="link-control">All Category</a>
-                                                <ul className="list-cate">
-                                                    <li className="level-0">All Category</li>
-                                                    <li className="level-1">-Electronics</li>
-                                                    <li className="level-2">Batteries &amp; Chargens</li>
-                                                    <li className="level-2">Headphone &amp; Headsets</li>
-                                                    <li className="level-2">Mp3 Player &amp; Acessories</li>
-                                                    <li className="level-1">-Smartphone &amp; Table</li>
-                                                    <li className="level-2">Batteries &amp; Chargens</li>
-                                                    <li className="level-2">Mp3 Player &amp; Headphones</li>
-                                                    <li className="level-2">Table &amp; Accessories</li>
-                                                    <li className="level-1">-Electronics</li>
-                                                    <li className="level-2">Batteries &amp; Chargens</li>
-                                                    <li className="level-2">Headphone &amp; Headsets</li>
-                                                    <li className="level-2">Mp3 Player &amp; Acessories</li>
-                                                    <li className="level-1">-Smartphone &amp; Table</li>
-                                                    <li className="level-2">Batteries &amp; Chargens</li>
-                                                    <li className="level-2">Mp3 Player &amp; Headphones</li>
-                                                    <li className="level-2">Table &amp; Accessories</li>
-                                                </ul>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -158,7 +135,7 @@ function Header () {
                                             <Link to="/contact-us" className="link-term mercado-item-title">Liên hệ chúng tôi</Link>
                                         </li>
                                         <li className="menu-item">
-                                            <a href="contact-us.html" className="link-term mercado-item-title">Công trình đã làm</a>
+                                            <Link to="/about-us" className="link-term mercado-item-title">Công trình đã làm</Link>
                                         </li>
                                     </ul>
                                 </div>
