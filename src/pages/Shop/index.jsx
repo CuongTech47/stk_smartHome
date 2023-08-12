@@ -1,116 +1,14 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import data from "../../datas/category.js";
+
+import productData from '../../datas/products.js'
 import bannerMain from '../../assets/imgs/banner/banner-main-01.jpg'
+import ProductItem from "../../components/Product/ProductItem.jsx";
 
-import cttm from '../../assets/imgs/products/cttm/công tắc-01.png'
 
-import gateWay from '../../assets/imgs/products/gateway/product-gateway.png'
 
-import ModuleCuaCong from '../../assets/imgs/products/module-cua-cong/module cửa cổng (2).png'
 
-import cam from '../../assets/imgs/products/cam/cam vcn.png'
-import kdt from '../../assets/imgs/products/khoa-dien-tu/T4-01-03a.png'
-
-import ctcc from '../../assets/imgs/products/cong-tac-cua-cuon/1_2.png'
-
-import gsttd from '../../assets/imgs/products/giam-sat-tieu-thu-dien/list.png'
-
-import octmcg from '../../assets/imgs/products/o-cam-thong-minh-chong-giat/o cam 1.png'
-
-const productData = [
-    {
-        id : 1,
-        name : 'Công tắc thông minh - hình vuông',
-        img : cttm,
-        imgs : [],
-    },
-    {
-        id : 2,
-        name : 'Bộ trung tâm điều khiển Gateway',
-        img : gateWay,
-        imgs : [],
-    },
-    {
-        id : 3,
-        name : 'Module cửa cổng',
-        img : ModuleCuaCong,
-        imgs : [],
-    },
-    {
-        id : 4,
-        name : 'Camera',
-        img : cam,
-        imgs : [],
-    },
-    {
-        id : 5,
-        name : 'Khóa điện tử',
-        img : kdt,
-        imgs : [],
-    },
-    {
-        id : 6,
-        name : 'Công tắc cửa cuốn',
-        img : ctcc,
-        imgs : [],
-    },
-    {
-        id : 7,
-        name : 'Bộ giám sát tiêu thụ điện',
-        img : gsttd,
-        imgs : [],
-    },
-    {
-        id : 8,
-        name : 'Ổ cắm thông minh chống giật',
-        img : octmcg,
-        imgs : [],
-    },
-    {
-        id : 9,
-        name : '',
-        img : '',
-        imgs : [],
-    },
-    {
-        id : 10,
-        name : '',
-        img : '',
-        imgs : [],
-    },
-    {
-        id : 11,
-        name : '',
-        img : '',
-        imgs : [],
-    },
-    {
-        id : 12,
-        name : '',
-        img : '',
-        imgs : [],
-    },
-    {
-        id : 13,
-        name : '',
-        img : '',
-        imgs : [],
-    },
-    {
-        id : 14,
-        name : '',
-        img : '',
-        imgs : [],
-    },
-    {
-        id : 15,
-        name : '',
-        img : '',
-        imgs : [],
-    },
-
-]
 function Shop () {
 
     const [category , setCategory] = useState('Smart Home')
@@ -165,20 +63,21 @@ function Shop () {
                             <div className="row">
                                 <ul className="product-list grid-products equal-container">
                                     {productData.map(item => (
-                                        <li className="col-lg-4 col-md-6 col-sm-6 col-xs-6 " key={item.id}>
-                                            <div className="product product-style-3 equal-elem ">
-                                                <div className="product-thumnail">
-                                                    <Link to={`/product/${item.id}`} title={item.name}>
-                                                        <figure><img src={item.img} alt={item.name} style={{ height: '364px' ,width: '364%' }} /></figure>
-                                                    </Link>
-                                                </div>
-                                                <div className="product-info">
-                                                    <a href="#" className="product-name"><span>{item.name}</span></a>
-                                                    <div className="wrap-price"><span className="product-price">Liên hệ</span></div>
-                                                    {/*<a href="#" className="btn add-to-cart">Add To Cart</a>*/}
-                                                </div>
-                                            </div>
-                                        </li>
+                                        <ProductItem key={item.id} name={item.name} image={item.img} id={item.id}  />
+                                        // <li className="col-lg-4 col-md-6 col-sm-6 col-xs-6 " key={item.id}>
+                                        //     <div className="product product-style-3 equal-elem ">
+                                        //         <div className="product-thumnail">
+                                        //             <Link to={`/product/${item.id}`} title={item.name}>
+                                        //                 <figure><img src={item.img} alt={item.name} style={{ height: '364px' ,width: '364%' }} /></figure>
+                                        //             </Link>
+                                        //         </div>
+                                        //         <div className="product-info">
+                                        //             <a href="#" className="product-name"><span>{item.name}</span></a>
+                                        //             <div className="wrap-price"><span className="product-price">Liên hệ</span></div>
+                                        //             {/*<a href="#" className="btn add-to-cart">Add To Cart</a>*/}
+                                        //         </div>
+                                        //     </div>
+                                        // </li>
                                     ))}
                                 </ul>
                             </div>

@@ -1,4 +1,26 @@
+import {Link, useParams} from "react-router-dom";
+
+import productData from "../../../datas/products.js";
+
+function getRandomProducts(count) {
+    const shuffledProducts = [...productData].sort(() => 0.5 - Math.random());
+    return shuffledProducts.slice(0, count);
+}
+
 function Detail () {
+    const { id } = useParams()
+    console.log(id)
+    const product = productData.find(product => product.id === parseInt(id, 10));
+    //
+    //
+    const randomProducts = getRandomProducts(4);
+
+    const handleCLick = () => {
+        alert('Vui lòng liên hệ 0898080179 để mua hàng')
+    }
+    const handleCLick1 = () => {
+        alert('Chúng tôi đang phát triển tính năng này ')
+    }
     return (
         <>
             <main id="main" className="main-site">
@@ -15,30 +37,30 @@ function Detail () {
                                 <div className="detail-media">
                                     <div className="product-gallery">
                                         <ul className="slides">
-                                            <li data-thumb="assets/images/products/digital_18.jpg">
-                                                <img src="assets/images/products/digital_18.jpg" alt="product thumbnail" />
-                                            </li>
-                                            <li data-thumb="assets/images/products/digital_17.jpg">
-                                                <img src="assets/images/products/digital_17.jpg" alt="product thumbnail" />
-                                            </li>
-                                            <li data-thumb="assets/images/products/digital_15.jpg">
-                                                <img src="assets/images/products/digital_15.jpg" alt="product thumbnail" />
-                                            </li>
-                                            <li data-thumb="assets/images/products/digital_02.jpg">
-                                                <img src="assets/images/products/digital_02.jpg" alt="product thumbnail" />
-                                            </li>
-                                            <li data-thumb="assets/images/products/digital_08.jpg">
-                                                <img src="assets/images/products/digital_08.jpg" alt="product thumbnail" />
-                                            </li>
-                                            <li data-thumb="assets/images/products/digital_10.jpg">
-                                                <img src="assets/images/products/digital_10.jpg" alt="product thumbnail" />
-                                            </li>
-                                            <li data-thumb="assets/images/products/digital_12.jpg">
-                                                <img src="assets/images/products/digital_12.jpg" alt="product thumbnail" />
-                                            </li>
-                                            <li data-thumb="assets/images/products/digital_14.jpg">
-                                                <img src="assets/images/products/digital_14.jpg" alt="product thumbnail" />
-                                            </li>
+                                            {/*<li data-thumb={product.img}>*/}
+                                                <img src={product.img} alt="product thumbnail" />
+                                            {/*</li>*/}
+                                            {/*<li data-thumb="assets/images/products/digital_17.jpg">*/}
+                                            {/*    <img src={product.img} alt="product thumbnail" />*/}
+                                            {/*</li>*/}
+                                            {/*<li data-thumb="assets/images/products/digital_15.jpg">*/}
+                                            {/*    <img src={product.img} alt="product thumbnail" />*/}
+                                            {/*</li>*/}
+                                            {/*<li data-thumb="assets/images/products/digital_02.jpg">*/}
+                                            {/*    <img src={product.img} alt="product thumbnail" />*/}
+                                            {/*</li>*/}
+                                            {/*<li data-thumb="assets/images/products/digital_08.jpg">*/}
+                                            {/*    <img src={product.img} alt="product thumbnail" />*/}
+                                            {/*</li>*/}
+                                            {/*<li data-thumb="assets/images/products/digital_10.jpg">*/}
+                                            {/*    <img src={product.img} alt="product thumbnail" />*/}
+                                            {/*</li>*/}
+                                            {/*<li data-thumb="assets/images/products/digital_12.jpg">*/}
+                                            {/*    <img src={product.img} alt="product thumbnail" />*/}
+                                            {/*</li>*/}
+                                            {/*<li data-thumb="assets/images/products/digital_14.jpg">*/}
+                                            {/*    <img src={product.img} alt="product thumbnail" />*/}
+                                            {/*</li>*/}
                                         </ul>
                                     </div>
                                 </div>
@@ -51,7 +73,7 @@ function Detail () {
                                         <i className="fa fa-star" aria-hidden="true" />
                                         <a href="#" className="count-review">(05 review)</a>
                                     </div>
-                                    <h2 className="product-name">Radiant-360 R6 Wireless Omnidirectional Speaker [White]</h2>
+                                    <h2 className="product-name">{product.name}</h2>
                                     <div className="short-desc">
                                         <ul>
                                             <li>7,9-inch LED-backlit, 130Gb</li>
@@ -62,12 +84,12 @@ function Detail () {
                                     <div className="wrap-social">
                                         <a className="link-socail" href="#"><img src="assets/images/social-list.png" alt="" /></a>
                                     </div>
-                                    <div className="wrap-price"><span className="product-price">$250.00</span></div>
+                                    <div className="wrap-price"><span className="product-price">Liên hệ giá</span></div>
                                     <div className="stock-info in-stock">
-                                        <p className="availability">Availability: <b>In Stock</b></p>
+                                        <p className="availability">Tình trạng : <b>Còn hàng</b></p>
                                     </div>
                                     <div className="quantity">
-                                        <span>Quantity:</span>
+                                        <span>Số lượng:</span>
                                         <div className="quantity-input">
                                             <input type="text" name="product-quatity" defaultValue={1} data-max={120} pattern="[0-9]*" />
                                             <a className="btn btn-reduce" href="#" />
@@ -75,18 +97,18 @@ function Detail () {
                                         </div>
                                     </div>
                                     <div className="wrap-butons">
-                                        <a href="#" className="btn add-to-cart">Add to Cart</a>
+                                        <Link  onClick={handleCLick} to="#" className="btn add-to-cart">Liên hệ 0898080179</Link>
                                         <div className="wrap-btn">
-                                            <a href="#" className="btn btn-compare">Add Compare</a>
-                                            <a href="#" className="btn btn-wishlist">Add Wishlist</a>
+                                            <a onClick={handleCLick1} href="#" className="btn btn-compare">Thêm so sánh</a>
+                                            <a onClick={handleCLick1} href="#" className="btn btn-wishlist">Thêm yêu thích</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="advance-info">
                                     <div className="tab-control normal">
-                                        <a href="#description" className="tab-control-item active">description</a>
-                                        <a href="#add_infomation" className="tab-control-item">Addtional Infomation</a>
-                                        <a href="#review" className="tab-control-item">Reviews</a>
+                                        <a  href="#description" className="tab-control-item active">Miêu tả</a>
+                                        <a href="#add_infomation" className="tab-control-item">Thông tin bổ sung</a>
+                                        <a href="#review" className="tab-control-item">Đánh giá</a>
                                     </div>
                                     <div className="tab-contents">
                                         <div className="tab-content-item active" id="description">
@@ -220,208 +242,61 @@ function Detail () {
                                 </div>
                             </div>{/* Categories widget*/}
                             <div className="widget mercado-widget widget-product">
-                                <h2 className="widget-title">Popular Products</h2>
+                                <h2 className="widget-title">SẢN PHẨM PHỔ BIẾN</h2>
                                 <div className="widget-content">
                                     <ul className="products">
-                                        <li className="product-item">
-                                            <div className="product product-widget-style">
-                                                <div className="thumbnnail">
-                                                    <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                                        <figure><img src="assets/images/products/digital_01.jpg" alt="" /></figure>
-                                                    </a>
+                                        {randomProducts.map(product_p => (
+                                            <li className="product-item" key={product_p.id}>
+                                                <div className="product product-widget-style">
+                                                    <div className="thumbnnail">
+                                                        <a href="detail.html" title={product_p.name}>
+                                                            <figure><img src={product_p.img} alt={product_p.name} /></figure>
+                                                        </a>
+                                                    </div>
+                                                    <div className="product-info">
+
+                                                        <Link to={`/product/${product_p.id}`} className="product-name"><span>{product_p.name}</span></Link>
+                                                        <div className="wrap-price"><span className="product-price">liên hệ giá</span></div>
+                                                    </div>
                                                 </div>
-                                                <div className="product-info">
-                                                    <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
-                                                    <div className="wrap-price"><span className="product-price">$168.00</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li className="product-item">
-                                            <div className="product product-widget-style">
-                                                <div className="thumbnnail">
-                                                    <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                                        <figure><img src="assets/images/products/digital_17.jpg" alt="" /></figure>
-                                                    </a>
-                                                </div>
-                                                <div className="product-info">
-                                                    <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
-                                                    <div className="wrap-price"><span className="product-price">$168.00</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li className="product-item">
-                                            <div className="product product-widget-style">
-                                                <div className="thumbnnail">
-                                                    <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                                        <figure><img src="assets/images/products/digital_18.jpg" alt="" /></figure>
-                                                    </a>
-                                                </div>
-                                                <div className="product-info">
-                                                    <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
-                                                    <div className="wrap-price"><span className="product-price">$168.00</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li className="product-item">
-                                            <div className="product product-widget-style">
-                                                <div className="thumbnnail">
-                                                    <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                                        <figure><img src="assets/images/products/digital_20.jpg" alt="" /></figure>
-                                                    </a>
-                                                </div>
-                                                <div className="product-info">
-                                                    <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker...</span></a>
-                                                    <div className="wrap-price"><span className="product-price">$168.00</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        ))}
+
+
                                     </ul>
                                 </div>
                             </div>
                         </div>{/*end sitebar*/}
-                        <div className="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div className="wrap-show-advance-info-box style-1 box-in-site">
-                                <h3 className="title-box">Related Products</h3>
-                                <div className="wrap-products">
-                                    <div className="products slide-carousel owl-carousel style-nav-1 equal-container" data-items={5} data-loop="false" data-nav="true" data-dots="false" data-responsive="{&quot;0&quot;:{&quot;items&quot;:&quot;1&quot;},&quot;480&quot;:{&quot;items&quot;:&quot;2&quot;},&quot;768&quot;:{&quot;items&quot;:&quot;3&quot;},&quot;992&quot;:{&quot;items&quot;:&quot;3&quot;},&quot;1200&quot;:{&quot;items&quot;:&quot;5&quot;}}">
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_04.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="group-flash">
-                                                    <span className="flash-item new-label">new</span>
-                                                </div>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><span className="product-price">$250.00</span></div>
-                                            </div>
-                                        </div>
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_17.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="group-flash">
-                                                    <span className="flash-item sale-label">sale</span>
-                                                </div>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><ins><p className="product-price">$168.00</p></ins> <del><p className="product-price">$250.00</p></del></div>
-                                            </div>
-                                        </div>
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_15.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="group-flash">
-                                                    <span className="flash-item new-label">new</span>
-                                                    <span className="flash-item sale-label">sale</span>
-                                                </div>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><ins><p className="product-price">$168.00</p></ins> <del><p className="product-price">$250.00</p></del></div>
-                                            </div>
-                                        </div>
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_01.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="group-flash">
-                                                    <span className="flash-item bestseller-label">Bestseller</span>
-                                                </div>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><span className="product-price">$250.00</span></div>
-                                            </div>
-                                        </div>
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_21.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><span className="product-price">$250.00</span></div>
-                                            </div>
-                                        </div>
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_03.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="group-flash">
-                                                    <span className="flash-item sale-label">sale</span>
-                                                </div>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><ins><p className="product-price">$168.00</p></ins> <del><p className="product-price">$250.00</p></del></div>
-                                            </div>
-                                        </div>
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_04.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="group-flash">
-                                                    <span className="flash-item new-label">new</span>
-                                                </div>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><span className="product-price">$250.00</span></div>
-                                            </div>
-                                        </div>
-                                        <div className="product product-style-2 equal-elem ">
-                                            <div className="product-thumnail">
-                                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                    <figure><img src="assets/images/products/digital_05.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>
-                                                </a>
-                                                <div className="group-flash">
-                                                    <span className="flash-item bestseller-label">Bestseller</span>
-                                                </div>
-                                                <div className="wrap-btn">
-                                                    <a href="#" className="function-link">quick view</a>
-                                                </div>
-                                            </div>
-                                            <div className="product-info">
-                                                <a href="#" className="product-name"><span>Radiant-360 R6 Wireless Omnidirectional Speaker [White]</span></a>
-                                                <div className="wrap-price"><span className="product-price">$250.00</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>{/*End wrap-products*/}
-                            </div>
-                        </div>
+                        {/*<div className="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">*/}
+                        {/*    <div className="wrap-show-advance-info-box style-1 box-in-site">*/}
+                        {/*        <h3 className="title-box">sản phẩm tương tự</h3>*/}
+                        {/*        <div className="wrap-products">*/}
+                        {/*            <div className="products slide-carousel owl-carousel style-nav-1 equal-container" data-items={5} data-loop="false" data-nav="true" data-dots="false" data-responsive="{&quot;0&quot;:{&quot;items&quot;:&quot;1&quot;},&quot;480&quot;:{&quot;items&quot;:&quot;2&quot;},&quot;768&quot;:{&quot;items&quot;:&quot;3&quot;},&quot;992&quot;:{&quot;items&quot;:&quot;3&quot;},&quot;1200&quot;:{&quot;items&quot;:&quot;5&quot;}}">*/}
+                        {/*                {*/}
+                        {/*                    randomProducts.map(product_r => (*/}
+                        {/*                        <div className="product product-style-2 equal-elem ">*/}
+                        {/*                            <div className="product-thumnail">*/}
+                        {/*                                <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">*/}
+                        {/*                                    <figure><img src="assets/images/products/digital_04.jpg" width={214} height={214} alt="T-Shirt Raw Hem Organic Boro Constrast Denim" /></figure>*/}
+                        {/*                                </a>*/}
+                        {/*                                <div className="group-flash">*/}
+                        {/*                                    <span className="flash-item new-label">new</span>*/}
+                        {/*                                </div>*/}
+                        {/*                                <div className="wrap-btn">*/}
+                        {/*                                    <a href="#" className="function-link">quick view</a>*/}
+                        {/*                                </div>*/}
+                        {/*                            </div>*/}
+                        {/*                            <div className="product-info">*/}
+                        {/*                                <a href="#" className="product-name"><span>{product_r.name}</span></a>*/}
+                        {/*                                <div className="wrap-price"><span className="product-price">$250.00</span></div>*/}
+                        {/*                            </div>*/}
+                        {/*                        </div>*/}
+                        {/*                    ))*/}
+                        {/*                }*/}
+                        {/*            </div>*/}
+                        {/*        </div>/!*End wrap-products*!/*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>{/*end row*/}
                 </div>{/*end container*/}
             </main>

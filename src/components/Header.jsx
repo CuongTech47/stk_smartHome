@@ -1,6 +1,7 @@
 
 import reactLogo from '../assets/images/logo.png'
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 
 function Header () {
@@ -8,6 +9,14 @@ function Header () {
         width: '738px',
         height: '177px'
     };
+
+    const [search , setSearch ] = useState('')
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value)
+
+
+    }
     return (
         <>
             <header id="header" className="header header-style-1">
@@ -61,7 +70,7 @@ function Header () {
                                 <div className="wrap-search center-section">
                                     <div className="wrap-search-form">
                                         <form action="#" id="form-search-top" name="form-search-top">
-                                            <input type="text" name="search" defaultValue placeholder="Search here..." />
+                                            <input onChange={(e)=>handleSearch(e)} type="text" name="search"  placeholder="Search here..." />
                                             <button form="form-search-top" type="button"><i className="fa fa-search" aria-hidden="true" /></button>
                                             <div className="wrap-list-cate">
                                                 <input type="hidden" name="product-cate" defaultValue={0} id="product-cate" />

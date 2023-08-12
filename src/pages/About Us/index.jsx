@@ -1,4 +1,71 @@
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+import {useState} from "react";
+
+import img1 from '../../assets/imgs/cong-trinh/drive-download-20230812T093504Z-001/z3989165594662_a7b90a36802783da2b24e1303a9c3a37.jpg'
+import img2 from '../../assets/imgs/cong-trinh/drive-download-20230812T093504Z-001/z3989165601112_1d8f4441e2ed8022daf9829ff5614875.jpg'
+import img3 from '../../assets/imgs/cong-trinh/drive-download-20230812T093504Z-001/z3989165604678_5b830cc733450c6a94f9e5026d607d4a.jpg'
+import img4 from '../../assets/imgs/cong-trinh/drive-download-20230812T093504Z-001/z3989165610668_3352bb111786f1a2630d9d7d0c23f321.jpg'
+import img5 from '../../assets/imgs/cong-trinh/drive-download-20230812T093504Z-001/z3989165612667_4ea4ede4fe6fa0b5efa6820ef78ac91a.jpg'
+import img6 from '../../assets/imgs/cong-trinh/drive-download-20230812T093504Z-001/z3989165616702_71961b538f6eed766283bd049c5db2fc.jpg'
+import img7 from '../../assets/imgs/cong-trinh/drive-download-20230812T093504Z-001/z3989165625585_a54d682123ad9fc7a93338b1ed631e35.jpg'
+
+const images = [
+    {
+        label: 'Đà Nẵng',
+        imgPath:img1,
+    },
+    {
+        label: 'Đà Nẵng',
+        imgPath:img2,
+    },
+    {
+        label: 'Đà Nẵng',
+        imgPath:img3,
+    },
+    {
+        label: 'Đà Nẵng',
+        imgPath: img4,
+    },
+    {
+        label: 'Đà Nẵng',
+        imgPath:img5,
+    },
+    {
+        label: 'Đà Nẵng',
+        imgPath:img6,
+    },
+    {
+        label: 'Đà Nẵng',
+        imgPath:img7,
+    },
+];
 function AboutUs() {
+    const theme = useTheme();
+    const [activeStep, setActiveStep] = useState(0);
+    const maxSteps = images.length;
+
+    const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleStepChange = (step) => {
+        setActiveStep(step);
+    };
     return (
         <>
             <main id="main" className="main-site">
@@ -92,85 +159,78 @@ function AboutUs() {
                             </div>
                         </div>
                     </div>
-                    {/*<div className="our-team-info">*/}
-                    {/*    <h4 className="title-box">Our teams</h4>*/}
-                    {/*    <div className="our-staff">*/}
-                    {/*        <div className="slide-carousel owl-carousel style-nav-1 equal-container" data-items={5} data-loop="false" data-nav="true" data-dots="false" data-margin={30} data-responsive="{&quot;0&quot;:{&quot;items&quot;:&quot;1&quot;},&quot;480&quot;:{&quot;items&quot;:&quot;2&quot;},&quot;768&quot;:{&quot;items&quot;:&quot;3&quot;},&quot;992&quot;:{&quot;items&quot;:&quot;3&quot;},&quot;1200&quot;:{&quot;items&quot;:&quot;4&quot;}}">*/}
-                    {/*            <div className="team-member equal-elem">*/}
-                    {/*                <div className="media">*/}
-                    {/*                    <a href="#" title="LEONA">*/}
-                    {/*                        <figure><img src="assets/images/member-leona.jpg" alt="LEONA" /></figure>*/}
-                    {/*                    </a>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="info">*/}
-                    {/*                    <b className="name">leona</b>*/}
-                    {/*                    <span className="title">Director</span>*/}
-                    {/*                    <p className="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="team-member equal-elem">*/}
-                    {/*                <div className="media">*/}
-                    {/*                    <a href="#" title="LUCIA">*/}
-                    {/*                        <figure><img src="assets/images/member-lucia.jpg" alt="LUCIA" /></figure>*/}
-                    {/*                    </a>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="info">*/}
-                    {/*                    <b className="name">LUCIA</b>*/}
-                    {/*                    <span className="title">Manager</span>*/}
-                    {/*                    <p className="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="team-member equal-elem">*/}
-                    {/*                <div className="media">*/}
-                    {/*                    <a href="#" title="NANA">*/}
-                    {/*                        <figure><img src="assets/images/member-nana.jpg" alt="NANA" /></figure>*/}
-                    {/*                    </a>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="info">*/}
-                    {/*                    <b className="name">NANA</b>*/}
-                    {/*                    <span className="title">Marketer</span>*/}
-                    {/*                    <p className="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="team-member equal-elem">*/}
-                    {/*                <div className="media">*/}
-                    {/*                    <a href="#" title="BRAUM">*/}
-                    {/*                        <figure><img src="assets/images/member-braum.jpg" alt="BRAUM" /></figure>*/}
-                    {/*                    </a>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="info">*/}
-                    {/*                    <b className="name">BRAUM</b>*/}
-                    {/*                    <span className="title">Member</span>*/}
-                    {/*                    <p className="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="team-member equal-elem">*/}
-                    {/*                <div className="media">*/}
-                    {/*                    <a href="#" title="LUCIA">*/}
-                    {/*                        <figure><img src="assets/images/member-lucia.jpg" alt="LUCIA" /></figure>*/}
-                    {/*                    </a>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="info">*/}
-                    {/*                    <b className="name">LUCIA</b>*/}
-                    {/*                    <span className="title">Manager</span>*/}
-                    {/*                    <p className="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="team-member equal-elem">*/}
-                    {/*                <div className="media">*/}
-                    {/*                    <a href="#" title="NANA">*/}
-                    {/*                        <figure><img src="assets/images/member-nana.jpg" alt="NANA" /></figure>*/}
-                    {/*                    </a>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="info">*/}
-                    {/*                    <b className="name">NANA</b>*/}
-                    {/*                    <span className="title">Marketer</span>*/}
-                    {/*                    <p className="desc">Contrary to popular belief, Lorem Ipsum is not simply random text...</p>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+                    <div className="our-team-info">
+                        <h4 className="title-box">Công trình đã làm</h4>
+                        <Box sx={{ maxWidth: 1150, flexGrow: 1 }}>
+                            <Paper
+                                square
+                                elevation={0}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    height: 100,
+                                    pl: 2,
+                                    bgcolor: 'background.default',
+                                }}
+                            >
+                                <Typography>{images[activeStep].label}</Typography>
+                            </Paper>
+                            <AutoPlaySwipeableViews
+                                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                                index={activeStep}
+                                onChangeIndex={handleStepChange}
+                                enableMouseEvents
+                            >
+                                {images.map((step, index) => (
+                                    <div key={step.label}>
+                                        {Math.abs(activeStep - index) <= 2 ? (
+                                            <Box
+                                                component="img"
+                                                sx={{
+                                                    height: 800,
+                                                    display: 'block',
+                                                    maxWidth: 1150,
+                                                    overflow: 'hidden',
+                                                    width: '100%',
+                                                }}
+                                                src={step.imgPath}
+                                                alt={step.label}
+                                            />
+                                        ) : null}
+                                    </div>
+                                ))}
+                            </AutoPlaySwipeableViews>
+                            <MobileStepper
+                                steps={maxSteps}
+                                position="static"
+                                activeStep={activeStep}
+                                nextButton={
+                                    <Button
+                                        size="small"
+                                        onClick={handleNext}
+                                        disabled={activeStep === maxSteps - 1}
+                                    >
+                                        Next
+                                        {theme.direction === 'rtl' ? (
+                                            <KeyboardArrowLeft />
+                                        ) : (
+                                            <KeyboardArrowRight />
+                                        )}
+                                    </Button>
+                                }
+                                backButton={
+                                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                                        {theme.direction === 'rtl' ? (
+                                            <KeyboardArrowRight />
+                                        ) : (
+                                            <KeyboardArrowLeft />
+                                        )}
+                                        Back
+                                    </Button>
+                                }
+                            />
+                        </Box>
+                    </div>
                     {/* </div> */}
                 </div>{/*end container*/}
             </main>
